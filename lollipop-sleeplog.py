@@ -17,6 +17,7 @@ ANDROID_VM_IP=os.getenv('ANDROID_VM_IP')
 ANDROID_VM_PORT=os.getenv('ANDROID_VM_PORT')
 BABYBUDDY_APIKEY=os.getenv('BABYBUDDY_APIKEY')
 BABYBUDDY_URL=os.getenv('BABYBUDDY_URL')
+TIMEZONE=os.getenv('TIMEZONE')
 LOGLEVEL=os.getenv('LOGLEVEL')
 
 argumentList = sys.argv[1:]
@@ -94,9 +95,9 @@ def get_newSleepFromFile():
 
 def post_newSleepFromDB(sleepStartTS, sleepEndTS):
     logger.debug("Converting Timestamps")
-    new_sleepStartTS = datetime.datetime.fromtimestamp(int(sleepStartTS) / 1000, datetime.timezone.utc).astimezone(pytz.timezone("America/Detroit")).strftime("%Y-%m-%dT%H:%M:%S")
+    new_sleepStartTS = datetime.datetime.fromtimestamp(int(sleepStartTS) / 1000, datetime.timezone.utc).astimezone(pytz.timezone(TIMEZONE)).strftime("%Y-%m-%dT%H:%M:%S")
     logger.debug("New Start Timestamp: [" + str(new_sleepStartTS) + "]")
-    new_sleepEndTS = datetime.datetime.fromtimestamp(int(sleepEndTS) / 1000, datetime.timezone.utc).astimezone(pytz.timezone("America/Detroit")).strftime("%Y-%m-%dT%H:%M:%S")
+    new_sleepEndTS = datetime.datetime.fromtimestamp(int(sleepEndTS) / 1000, datetime.timezone.utc).astimezone(pytz.timezone(TIMEZONE)).strftime("%Y-%m-%dT%H:%M:%S")
     logger.debug("New End Timestamp: [" + str(new_sleepEndTS) + "]")
     url = "https://" + BABYBUDDY_URL + "/api/sleep/"
     data = {'child': 1,
