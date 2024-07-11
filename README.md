@@ -1,6 +1,6 @@
 I use a Lollipop Baby Camera along with Baby Buddy, and wanted to get the sleep data from the camera app into Baby Buddy. 
 
-I discovered that Lollipop stores a sqlite3 database in their Android data directory, and I can easilt read it.
+I discovered that Lollipop stores a sqlite3 database in their Android data directory, and I can easily read it as it is a sqlite3 database.
 
 This code is messy but works for me. I will clean it up in the future. I have this running hourly w/ a crontab entry.
 
@@ -12,3 +12,4 @@ In setting this up you need to have some sort of rooted Android device or VM wit
  - ANDROID_VM_IP
  - ANDROID_VM_PORT
  - LOGLEVEL
+ - TIMEZONE
